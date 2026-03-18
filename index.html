@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZKOL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: #333;
+            background: #fff;
+        }
+
+        /* Header */
+        header {
+            background: #003399;
+            color: #fff;
+            padding: 0;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #003399;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background: #002277;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 12px 16px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #003399;
+        }
+
+        /* Main content */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Banner */
+        .banner {
+            background: #e8f0fe;
+            border-left: 5px solid #003399;
+            padding: 20px;
+            margin-bottom: 24px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .banner h1 {
+            font-size: 22px;
+            color: #003399;
+            margin-bottom: 8px;
+        }
+
+        .banner p {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        /* Content sections */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .section-box h2 {
+            font-size: 18px;
+            color: #003399;
+            border-bottom: 2px solid #003399;
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+        }
+
+        .section-box h3 {
+            font-size: 16px;
+            color: #222;
+            margin: 12px 0 6px;
+        }
+
+        .section-box p {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .section-box ul {
+            margin-left: 20px;
+            line-height: 2;
+            color: #444;
+        }
+
+        .section-box a {
+            color: #003399;
+            text-decoration: none;
+        }
+
+        .section-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table th {
+            background: #003399;
+            color: #fff;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) td {
+            background: #f0f4ff;
+        }
+
+        /* News list */
+        .news-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .news-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #003399;
+        }
+
+        /* Sidebar boxes */
+        .sidebar-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-box h3 {
+            font-size: 16px;
+            color: #003399;
+            border-bottom: 2px solid #003399;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-box ul {
+            list-style: none;
+            line-height: 2;
+        }
+
+        .sidebar-box ul li a {
+            color: #003399;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .sidebar-box ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* Footer */
+        footer {
+            background: #003399;
+            color: #ccd6ff;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 13px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #aabbff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <a class="logo" href="index.html">
+                <div class="logo-img">ZK</div>
+                <div class="logo-text">ZKOL</div>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#uvod" class="active">Úvod</a></li>
+                <li><a href="#o-nas">O nás</a></li>
+                <li><a href="#clenove">Členové</a></li>
+                <li><a href="#aktuality">Aktuality</a></li>
+                <li><a href="#dokumenty">Dokumenty</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="banner" id="uvod">
+            <h1>Vítejte na stránkách ZKOL</h1>
+            <p>
+                Tato stránka je připravena pro GitHub Pages jako statická verze webu
+                <a href="http://www.zkol.cz" target="_blank" rel="noopener noreferrer">www.zkol.cz</a>.
+            </p>
+        </div>
+
+        <div class="content-grid">
+
+            <!-- Main column -->
+            <div>
+
+                <div class="section-box" id="aktuality">
+                    <h2>Aktuality</h2>
+
+                    <div class="news-item">
+                        <div class="news-date">18. 3. 2026</div>
+                        <div class="news-title">Spuštění nových stránek ZKOL na GitHub Pages</div>
+                        <p>Statická verze webu ZKOL je nyní dostupná prostřednictvím GitHub Pages.</p>
+                    </div>
+
+                </div>
+
+                <div class="section-box" id="o-nas">
+                    <h2>O nás</h2>
+                    <p>
+                        ZKOL je organizace se sídlem v České republice.
+                        Více informací naleznete na původních stránkách
+                        <a href="http://www.zkol.cz" target="_blank" rel="noopener noreferrer">www.zkol.cz</a>.
+                    </p>
+                </div>
+
+                <div class="section-box" id="clenove">
+                    <h2>Členové</h2>
+                    <p>Informace o členech organizace ZKOL.</p>
+                </div>
+
+                <div class="section-box" id="dokumenty">
+                    <h2>Dokumenty</h2>
+                    <p>Zde naleznete důležité dokumenty a materiály.</p>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+
+                <div class="sidebar-box" id="kontakt">
+                    <h3>Kontakt</h3>
+                    <div class="contact-info">
+                        <strong>ZKOL</strong><br>
+                        <a href="http://www.zkol.cz" target="_blank" rel="noopener noreferrer">www.zkol.cz</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-box">
+                    <h3>Rychlé odkazy</h3>
+                    <ul>
+                        <li><a href="#uvod">Úvod</a></li>
+                        <li><a href="#o-nas">O nás</a></li>
+                        <li><a href="#aktuality">Aktuality</a></li>
+                        <li><a href="#dokumenty">Dokumenty</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>
+            &copy; ZKOL &nbsp;|&nbsp;
+            <a href="http://www.zkol.cz" target="_blank" rel="noopener noreferrer">www.zkol.cz</a>
+        </p>
+        <p>Stránka připravena pro GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
